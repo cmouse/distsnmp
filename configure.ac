@@ -112,6 +112,8 @@ AC_STRUCT_TM
 # some library checks
 
 AC_PATH_PROG([NETSNMP_CONFIG], [net-snmp-config])
+AC_PATH_PROG([MARKDOWN], [markdown], [true])
+AC_PATH_PROG([RONN], [ronn], [true])
 
 if test x$NETSNMP_CONFIG == x; then
   AC_MSG_ERROR([cannot find net-snmp-config])
