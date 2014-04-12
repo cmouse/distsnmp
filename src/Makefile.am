@@ -1,0 +1,5 @@
+bin_PROGRAMS=distsnmptxd distsnmprxd
+
+distsnmptxd_SOURCES=distsnmptxd.cc
+
+distsnmprxd_SOURCES=distsnmprxd.cc

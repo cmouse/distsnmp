@@ -19,3 +19,18 @@
 *.exe
 *.out
 *.app
+
+# Automake stuff
+
+Makefile
+config.h
+*.in
+/autom4te.cache
+/configure
+/config.*
+stamp-h1
+/compile
+/depcomp
+/install-sh
+/ltmain.sh
+/missing
