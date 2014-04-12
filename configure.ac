@@ -91,6 +91,10 @@ else
 fi
 AC_SUBST([RELRO_CFLAGS])
 
+AC_ARG_WITH([net-snmp-config], AC_HELP_STRING([--with-net-snmp-config=path], [Path to net-snmp-config script]),
+  [NETSNMP_CONFIG=$withval])
+
+
 AC_C_CONST
 AC_C_BIGENDIAN
 AC_C_INLINE
@@ -106,6 +110,18 @@ AC_STRUCT_ST_RDEV
 AC_STRUCT_TM
 
 # some library checks
+
+AC_PATH_PROG([NETSNMP_CONFIG], [net-snmp-config])
+
+if test x$NETSNMP_CONFIG == x; then
+  AC_MSG_ERROR([cannot find net-snmp-config])
+fi
+
+AC_SUBST([SNMP_CFLAGS])
+AC_SUBST([SNMP_LDFLAGS])
+
+SNMP_CFLAGS=`$NETSNMP_CONFIG --base-lib-cflags`
+SNMP_LDFLAGS=`$NETSNMP_CONFIG --external-libs`
 
 AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile doc/Makefile])
 AC_OUTPUT
