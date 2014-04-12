@@ -117,11 +117,19 @@ if test x$NETSNMP_CONFIG == x; then
   AC_MSG_ERROR([cannot find net-snmp-config])
 fi
 
+BOOST_REQUIRE
+BOOST_FOREACH
+BOOST_PROGRAM_OPTIONS
+
 AC_SUBST([SNMP_CFLAGS])
 AC_SUBST([SNMP_LDFLAGS])
 
 SNMP_CFLAGS=`$NETSNMP_CONFIG --base-lib-cflags`
-SNMP_LDFLAGS=`$NETSNMP_CONFIG --external-libs`
+SNMP_LDFLAGS=`$NETSNMP_CONFIG --libs`
+
+PKG_CHECK_MODULES([libhiredis], [libhiredis])
+PKG_CHECK_MODULES([libzmq], [libzmq])
+PKG_CHECK_MODULES([libevent], [libevent])
 
 AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile doc/Makefile])
 AC_OUTPUT

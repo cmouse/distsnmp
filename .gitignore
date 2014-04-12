@@ -21,7 +21,6 @@
 *.app
 
 # Automake stuff
-
 Makefile
 config.h
 *.in
@@ -35,3 +34,6 @@ stamp-h1
 /ltmain.sh
 /missing
 /libtool
+
+# Other stuff
+.*.swp
